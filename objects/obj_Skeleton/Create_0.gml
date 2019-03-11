@@ -1,0 +1,24 @@
+event_inherited();
+image_speed = 0.4;
+state = "move";
+roll_speed = 4.2;
+run_speed = 2.8;
+kills = 0;
+level = 1;
+experience = 0;
+max_experience = 20;
+strength = 25;
+player_immune = 0;
+roll_delay = 0;
+ult_meter = 0;
+ult_meter_max = 250;
+ult_state = false;
+// Dependencies
+input = instance_create_layer(0,0, "Instances", obj_input);
+sprite_idle = s_skeleton_idle;
+sprite_run = s_skeleton_run;
+sprite_roll = s_skeleton_roll;
+sprite_attack_1 = s_skeleton_attack_one;
+sprite_attack_2 = s_skeleton_attack_two;
+sprite_attack_3 = s_skeleton_attack_three;
+sprite_knockback = s_skeleton_hitstun;
