@@ -38,7 +38,7 @@ switch (state){
 		break;
 	case "roll":
 		#region Roll State
-		player_immune = 6;
+		player_immune = 10;
 		roll_delay = 20;
 		set_state_sprite(sprite_roll, 1.4, 0);
 		with(obj_input){
@@ -82,7 +82,7 @@ switch (state){
 			audio_play_sound(a_swipe, 3, false);
 			
 			if (ult_state){
-				create_hitbox(x + (25 * image_xscale),y, self, s_skeleton_ult_attack, 6, 20, 6, image_xscale);
+				create_hitbox(x + (25 * image_xscale),y, self, s_skeleton_ult_attack, 6, 25, 5, image_xscale);
 			}else{
 				create_hitbox(x,y, self, s_skeleton_attack_one_damage, 2, 8, 5, image_xscale);
 			}
@@ -109,7 +109,7 @@ switch (state){
 			audio_play_sound(a_swipe, 3, false);
 			
 			if (ult_state){
-				create_hitbox(x + (25 * image_xscale),y, self, s_skeleton_ult_attack, 6, 25, 8, image_xscale);
+				create_hitbox(x + (25 * image_xscale),y, self, s_skeleton_ult_attack, 6, 40, 5, image_xscale);
 			}else{
 				create_hitbox(x,y, self, s_skeleton_attack_two_damage, 1.5, 8, 5, image_xscale);
 			}
@@ -134,7 +134,7 @@ switch (state){
 			audio_play_sound(a_swipe, 3, false);
 			
 			if (ult_state){
-				create_hitbox(x + (25 * image_xscale),y, self, s_skeleton_ult_attack, 6, 45, 10, image_xscale);
+				create_hitbox(x + (25 * image_xscale),y, self, s_skeleton_ult_attack, 6, 50, 8, image_xscale);
 			}else{
 				create_hitbox(x,y, self, s_skeleton_attack_three_damage, 5, 8, 8, image_xscale);
 			}
@@ -175,3 +175,4 @@ if (roll_delay > 0){
 if (ult_meter > ult_meter_max){
 	ult_meter = ult_meter_max;
 }
+

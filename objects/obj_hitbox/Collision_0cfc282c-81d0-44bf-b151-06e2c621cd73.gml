@@ -12,9 +12,18 @@ if((creator.object_index != obj_Skeleton) and (player_can_be_hit > 0)){
 }//prevent getting hit when in i frames
 var damage_dealt = damage;
 
+if(instance_exists(obj_Skeleton)){
+	if((obj_Skeleton.ult_state == true) and (other.object_index == obj_Skeleton)){
+		other.hp -= (damage_dealt / 3);
+	}else{
+		other.hp -= damage_dealt;
+	}
+}
 
-other.hp -= damage_dealt;
-audio_play_sound(a_medium_hit,4,false);
+if (sound_playing == 0){
+	audio_play_sound(a_medium_hit,3,false);
+	sound_playing = 2;
+}
 //show_debug_message("HitParticle!");
 var blood_splat_num = random_range(3,5);
 repeat(blood_splat_num){
@@ -27,7 +36,7 @@ if(instance_exists(obj_Skeleton)){
 	if ((other.object_index == obj_Skeleton)){
 		//hitbox hits player
 		with(obj_Skeleton){
-			player_immune = 25;
+			player_immune = 32;
 		}
 		other.state = "knockback";
 		other.knockback_speed = knockback * image_xscale;
@@ -72,7 +81,7 @@ if(instance_exists(obj_Skeleton)){
 	
 ds_list_add(hit_objects, other);
 //show_debug_message(other.hp);
-if (other.state != "death"){
+if ((other.state != "death") and (other.object_index != obj_boss)){
 	other.state = "knockback";
 }
 

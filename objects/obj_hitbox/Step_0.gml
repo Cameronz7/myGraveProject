@@ -5,3 +5,6 @@ if (sprite_index == s_skeleton_ult_attack){
 }else{
 	visible = false;
 }
+if (sound_playing > 0){
+	sound_playing -= 1;
+}

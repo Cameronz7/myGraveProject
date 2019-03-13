@@ -6,13 +6,31 @@ if (instance_exists(obj_Skeleton)){
 	draw_hp = lerp(draw_hp, obj_Skeleton.hp, 0.2);
 	draw_max_hp = obj_Skeleton.max_hp;
 	
-	draw_ult = lerp(draw_ult, obj_Skeleton.ult_meter, 0.2);
-	draw_max_ult = obj_Skeleton.ult_meter_max;
+	
+	
+	var camera_id = view_camera[0];
+	var view_width = camera_get_view_width(camera_id);
+	var view_height = camera_get_view_height(camera_id);
+	
+		if((obj_Skeleton.ult_meter == obj_Skeleton.ult_meter_max) and (obj_Skeleton.ult_state == false)){
+			draw_sprite(s_x, 0,view_width/2, view_height/2 + 8);
+		}
+		if (obj_Skeleton.ult_state == true){
+			draw_ult = lerp(draw_ult, (obj_Skeleton.ult_time), 0.2);	
+			draw_max_ult = obj_Skeleton.ult_time_max;
+			
+		}else{
+			draw_ult = lerp(draw_ult, obj_Skeleton.ult_meter, 0.2);	
+			draw_max_ult = obj_Skeleton.ult_meter_max;
+		}
+	
 }else{
 	draw_hp = lerp(draw_hp, 0, 0.2);
 	draw_ult = lerp(draw_ult, 0, 0.2);
 }
+
 var ult_percent = draw_ult / draw_max_ult;
+//show_debug_message("ult_percent: " + string(draw_ult) + " / " + string(draw_max_ult));
 var hp_percent = draw_hp / draw_max_hp;
 
 draw_rectangle_color(hp_x, hp_y, hp_x + (hp_width * hp_percent), hp_y + hp_height, c_white, c_white, c_white,c_white, false);

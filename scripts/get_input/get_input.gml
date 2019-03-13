@@ -5,6 +5,7 @@ if (allowed == 1){
 	left = keyboard_check(vk_left);
 	rolling = keyboard_check_pressed(vk_space);
 	attacking = keyboard_check_pressed(vk_lcontrol);
+	activate_ult = keyboard_check(ord("X"));
 	if ((right) and (left)){
 		left = false;
 	}

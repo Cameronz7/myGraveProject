@@ -2,7 +2,7 @@
 if (not instance_exists(obj_camera)){
 	exit;
 }
-var trans_val = 0.00007;
+var trans_val = 0.00005;
 if (instance_exists(obj_Skeleton)){
 	if (obj_Skeleton.level > 1){
 		close_red = lerp(close_red, 153, trans_val);

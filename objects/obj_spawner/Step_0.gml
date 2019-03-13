@@ -8,8 +8,14 @@ if (instance_exists(obj_Skeleton))
 	
 	with(obj_Skeleton){
 		if(ult_meter == ult_meter_max){
-			if (ult_state = false){
+			if ((ult_state = false) and (input.activate_ult)){
 				//show_debug_message("ult on");
+				if (hp < 80){
+				hp += 20;
+				}
+				if (hp > max_hp){
+					hp = max_hp;
+				}
 				ult_state = true;
 				sprite_idle = s_skeleton_idle_2;
 				sprite_run = s_skeleton_run_2;
@@ -18,7 +24,7 @@ if (instance_exists(obj_Skeleton))
 				sprite_attack_2 = s_skeleton_attack_two_2;
 				sprite_attack_3 = s_skeleton_attack_three_2;
 				sprite_knockback = s_skeleton_hitstun_2;
-				ult_time = (10 * 60);
+				ult_time = ult_time_max;
 			}
 		}else{
 			ult_state = false;
@@ -46,6 +52,10 @@ if (instance_exists(obj_Skeleton))
 		exit;
 	}
 	var enemy = choose(obj_knight, obj_crow, obj_crow);
+	
+	if((obj_Skeleton.kills > 50) and (!instance_exists(obj_boss))){
+		enemy = choose(obj_knight,obj_knight, obj_crow, obj_crow, obj_crow, obj_boss);
+	}
 	
 	var new_x = random_range(220, room_width - 220);
 	while (point_distance(new_x, 0, obj_Skeleton.x, 0) < 200)
